@@ -1,7 +1,7 @@
 import React from "react";
 import LOGO from "../../assets/images/logo.png";
-import { NavLink } from "react-router";
 import { FaGithub } from "react-icons/fa";
+import MyNavLink from "./MyNavLink";
 
 const Navbar = () => {
   return (
@@ -10,34 +10,13 @@ const Navbar = () => {
         <img src={LOGO} alt="" className="w-[50px]" />
         <ul className="flex justify-between items-center gap-4">
           <li>
-            <NavLink
-              className={({ isActive }) =>
-                `font-semibold ${isActive ? "text-purple-400 border-b border-purple-500" : ""}`
-              }
-              to={"/"}
-            >
-              Home
-            </NavLink>
+            <MyNavLink to={"/"}>Home</MyNavLink>
           </li>
           <li>
-            <NavLink
-              className={({ isActive }) =>
-                `font-semibold ${isActive ? "text-purple-400 border-b border-purple-500" : ""}`
-              }
-              to={"/apps"}
-            >
-              Apps
-            </NavLink>
+            <MyNavLink to={"/apps"}>Apps</MyNavLink>
           </li>
           <li>
-            <NavLink
-              className={({ isActive }) =>
-                `font-semibold ${isActive ? "text-purple-400 border-b border-purple-500" : ""}`
-              }
-              to={"/installapps"}
-            >
-              Installation
-            </NavLink>
+            <MyNavLink to={"/InstallApps"}> Installation</MyNavLink>
           </li>
         </ul>
         <button className="btn bg-purple-500 text-white">
