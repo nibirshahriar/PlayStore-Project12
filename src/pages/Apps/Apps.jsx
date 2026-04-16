@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppCard from "../../components/UI/AppCard";
 import { HashLoader } from "react-spinners";
 import UseApps from "../../components/Hook/UseApps";

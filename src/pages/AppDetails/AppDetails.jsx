@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router";
 import UseApps from "../../components/Hook/UseApps";
+import { InstalledContxt } from "../../context/InstalledContxt";
+import { toast } from "react-toastify";
 
 const AppDetails = () => {
   const { id } = useParams();
@@ -10,6 +12,8 @@ const AppDetails = () => {
   const expectedApp = apps.find((app) => String(app.id) === id);
   //   console.log(expectedApp);
 
+  const { installedApps, setInstalledApps } = useContext(InstalledContxt);
+
   if (loading) {
     return <div className="text-center mt-10">Loading...</div>;
   }
@@ -17,10 +21,19 @@ const AppDetails = () => {
   if (!expectedApp) {
     return <div className="text-center mt-10">App not found</div>;
   }
+
+  const handleInstallApp = () => {
+    setInstalledApps([...installedApps, expectedApp]);
+    toast.success(`${expectedApp.title} is installed successfully`);
+  };
   return (
     <div className="container mx-auto">
       <div className="shadow p-6 space-y-2 text-center">
-        <img src={expectedApp.image} alt="" className="mx-auto" />
+        <img
+          src={expectedApp.image}
+          alt=""
+          className="mx-auto h-[250px] w-auto"
+        />
         <h2 className="font-semibold text-3xl">{expectedApp.title}</h2>
         <p>
           Developed By:{" "}
@@ -28,7 +41,12 @@ const AppDetails = () => {
             {expectedApp.companyName}
           </span>
         </p>
-        <button className="btn bg-purple-500 text-white">Install Now</button>
+        <button
+          onClick={handleInstallApp}
+          className="btn bg-purple-500 text-white"
+        >
+          Install Now
+        </button>
       </div>
     </div>
   );

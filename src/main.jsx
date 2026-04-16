@@ -9,9 +9,12 @@ import { RouterProvider } from "react-router/dom";
 // import Apps from "./pages/Apps/Apps";
 // import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { router } from "./Router/Router";
+import InstalledAppContext from "./context/InstalledAppContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <InstalledAppContext>
+      <RouterProvider router={router} />
+    </InstalledAppContext>
   </StrictMode>,
 );
